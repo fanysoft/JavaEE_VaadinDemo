@@ -23,7 +23,7 @@ public class SimpleLoginView extends CustomComponent implements View, Button.Cli
     private final TextField user;
     private final PasswordField password;
     private final Button loginButton;
-    private final Label label;
+    private static Label label;
 
     public SimpleLoginView() {
         setSizeFull();
@@ -79,7 +79,10 @@ public class SimpleLoginView extends CustomComponent implements View, Button.Cli
         protected boolean isValidValue(String value) {
             // Password must be at least 8 characters long and contain at least one number
             if (value != null  && (value.length() < 8 || !value.matches(".*\\d.*"))) {
+            	
+                label.setValue("WRONG CREDENTIALS, try again");
                 return false;
+                
             }
             return true;
         }
