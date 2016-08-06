@@ -25,7 +25,7 @@ public class MyUI extends UI {
     	new Navigator(this, this);
     	
     	getNavigator().addView(SimpleLoginView.NAME, SimpleLoginView.class);
-    	getNavigator().addView(SimpleLoginMainView.NAME, SimpleLoginMainView.class);
+    	getNavigator().addView(ChartMainView.NAME, ChartMainView.class);
 
     	getNavigator().addViewChangeListener(new ViewChangeListener() {
     		

@@ -15,7 +15,7 @@ import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.themes.Reindeer;
 
-import cz.vancura.VaadinWorkflow.chart.SimpleLoginMainView;
+import cz.vancura.VaadinWorkflow.chart.ChartMainView;
 
 public class SimpleLoginView extends CustomComponent implements View, Button.ClickListener  {
 
@@ -107,7 +107,7 @@ public class SimpleLoginView extends CustomComponent implements View, Button.Cli
 
         	System.out.println("Correct login");
             getSession().setAttribute("user", username);
-            getUI().getNavigator().navigateTo(SimpleLoginMainView.NAME);//
+            getUI().getNavigator().navigateTo(ChartMainView.NAME);//
 
         } else {
         	

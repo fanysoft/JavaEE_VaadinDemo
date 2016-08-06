@@ -12,18 +12,18 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-public class ChartsData {
+public class ChartData {
 	
     final String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
 	final String DB_URL = "jdbc:mysql://wh19.farma.gigaserver.cz:3306/vancura_cz_";
-	final String USER = "";
-	final String PASS = "";
+	final String USER = "vancura_cz";
+	final String PASS = "katerina";
 	Connection conn = null;
 	Statement stmt = null;
     
     List<Spotreba> spotrebaPole = new ArrayList<Spotreba>();
   
-	public ChartsData() {
+	public ChartData() {
     	   
  	   try {
      	   
@@ -33,7 +33,7 @@ public class ChartsData {
  		   
  		   String sql = null;
  		   
- 		   sql = "SELECT timestamp, ele, plyn, voda, temp FROM energie ORDER BY timestamp";
+ 		   sql = "SELECT timestamp, ele, plyn, voda, temp, temp_in FROM energie ORDER BY timestamp";
  		   System.out.println("Chart - " + sql);
  		   
  		   ResultSet rs = stmt.executeQuery(sql);
@@ -54,9 +54,10 @@ public class ChartsData {
 				  int db_value2 = Integer.parseInt(rs.getString("plyn"));
 				  int db_value3 = Integer.parseInt(rs.getString("voda"));
 				  int db_value4 = Integer.parseInt(rs.getString("temp"));
+				  int db_value5 = Integer.parseInt(rs.getString("temp_in"));
 				       
-				  spotrebaPole.add(new Spotreba(db_date3, db_value1, db_value2, db_value3, db_value4));
-				  System.out.print("Table - From dB : date=" + db_date.substring(0, 10) + " ele=" + db_value1 + " plyn2=" + db_value2  + " voda=" + db_value3 + " temp=" + db_value4 + "\n");		       
+				  spotrebaPole.add(new Spotreba(db_date3, db_value1, db_value2, db_value3, db_value4, db_value5));
+				  System.out.print("Table - From dB : date=" + db_date.substring(0, 10) + " ele=" + db_value1 + " plyn2=" + db_value2  + " voda=" + db_value3 + " tempOut=" + db_value4 + " tempIn=" + db_value5 + "\n");		       
 			   }
  		   
  		   if (pocet ==  0 ) {
@@ -106,3 +107,4 @@ public class ChartsData {
 	}
     
 }
+
